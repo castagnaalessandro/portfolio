@@ -317,4 +317,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    
+    document.addEventListener("DOMContentLoaded", () => {
+
+    const lightbox = document.getElementById("project-lightbox");
+    const closeBtn = document.querySelector(".close-lightbox");
+    const nextBtn = document.querySelector(".lb-next");
+    const prevBtn = document.querySelector(".lb-prev");
+
+    // =========================
+    // FIX APERTURA LIGHTBOX
+    // =========================
+    // Ogni volta che il lightbox viene mostrato via style,
+    // aggiungiamo anche la classe "active"
+    const observer = new MutationObserver(() => {
+        if (lightbox.style.display === "flex") {
+            lightbox.classList.add("active");
+        }
+    });
+
+    observer.observe(lightbox, { attributes: true, attributeFilter: ["style"] });
+
+    // =========================
+    // FIX CHIUSURA (X)
+    // =========================
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = "none";   // mantiene il tuo sistema
+            lightbox.classList.remove("active"); // sincronizza
+        });
+    }
+
+    // =========================
+    // KEYBOARD CONTROLS
+    // =========================
+    document.addEventListener("keydown", (e) => {
+
+        // funziona solo se aperto
+        if (!lightbox.classList.contains("active")) return;
+
+        if (e.key === "ArrowRight") {
+            if (nextBtn) nextBtn.click();
+        }
+
+        if (e.key === "ArrowLeft") {
+            if (prevBtn) prevBtn.click();
+        }
+
+        if (e.key === "Escape") {
+            if (closeBtn) closeBtn.click();
+        }
+    });
+
+});
+
+
+
+
+
+
+
+
+document.querySelectorAll(".custom-video").forEach(video => {
+
+    video.addEventListener("click", () => {
+
+        // crea overlay fullscreen
+        const overlay = document.createElement("div");
+        overlay.classList.add("video-fullscreen");
+
+        // clona il video
+        const newVideo = video.cloneNode(true);
+        newVideo.controls = true;
+        newVideo.autoplay = true;
+
+        overlay.appendChild(newVideo);
+        document.body.appendChild(overlay);
+
+        // chiudi cliccando fuori
+        overlay.addEventListener("click", () => {
+            overlay.remove();
+        });
+
+    });
+
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links li a');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            // Apre/Chiude il menu
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Blocca lo scroll della pagina se il menu è aperto
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+    }
+
+    // Chiude il menu quando clicchi su un link (Home, Video, ecc.)
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+});

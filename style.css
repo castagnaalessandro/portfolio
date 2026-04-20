@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap');
+/* ------------------- RESET BASE / SPAZIATURA ------------------- */
+section {
+    background: #000 !important;
+    
+    /* Il primo valore (120px) è lo spazio sopra/sotto per far respirare le sezioni.
+       Il secondo valore (5%) è la spaziatura laterale in stile "sito largo" */
+    padding: 120px 5% !important; 
+    
+    /* Questo assicura che il sito non sbrodoli fuori schermo */
+    box-sizing: border-box !important; 
+}
 /* ------------------- RESET BASE ------------------- */
 * {
     margin: 0;
@@ -32,6 +43,25 @@ a:hover {
 }
 
 /* ------------------- NAVBAR ------------------- */
+#navbar {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    background: rgba(13, 13, 13, 0.95);
+    
+    /* Allineamento perfetto: 15px sopra/sotto e 5% ai lati come le sezioni */
+    padding: 20px 5% !important; 
+    
+    display: flex; 
+    justify-content: space-between; /* Spinge AC a sinistra e i Link a destra */
+    align-items: center;
+    z-index: 1000;
+
+    /* ELIMINIAMO LA RIGA: via bordo e via ombra */
+    border-bottom: none !important;
+    box-shadow: none !important; 
+}
 #navbar {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -105,8 +135,8 @@ a:hover {
 /* ------------------- SKILLS (Horizontal Scroll) ------------------- */
 #personal-skills { padding: 140px 0; }
 .horizontal-wrapper { 
-    overflow: hidden; width: 100%; height: 100vh; background: #050505; 
-    border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden; width: 100%; height: 100vh; background: #000000; 
+    border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .horizontal-container { 
     display: flex; 
@@ -308,17 +338,26 @@ body {
     top: 0; 
     left: 0; 
     width: 100%;
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     
-    /* Riduciamo il padding verticale ma lo teniamo largo ai lati */
+    /* RENDIAMO LA BARRA COMPLETAMENTE INVISIBILE E TRASPARENTE */
+    background: transparent !important; 
+    background-color: transparent !important;
+    
+    /* DISTRUGGIAMO QUALSIASI TIPO DI BORDO O OMBRA */
+    border: none !important;
+    border-bottom: none !important; 
+    box-shadow: none !important; 
+    outline: none !important;
+    
+    /* ZERO EFFETTO VETRO */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    
     padding: 15px 4%; 
     z-index: 10000;
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* --- IL TUO LOGO "AC." --- */
@@ -482,7 +521,7 @@ body {
 #portfolio-intro {
     width:100%;
     padding:120px 10%;
-    background:#151515;
+    background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #000000 100%) !important; 
 }
 
 .portfolio-container {
@@ -1300,22 +1339,32 @@ transform:translateY(0);
 
 
 
-.typing{
-overflow:hidden;
-white-space:nowrap;
-border-right:2px solid #1e90ff;
-animation:typing 3s steps(30), blink .7s infinite;
+/* ------------------- EFFETTO SCRITTURA + COLORE ------------------- */
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #1e90ff;
+    /* Qui uniamo le TRE animazioni insieme! */
+    animation: typing 3s steps(30), blink 0.7s infinite, respiroColore 3s infinite alternate ease-in-out !important;
 }
 
-@keyframes typing{
-from{width:0}
-to{width:100%}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }
 
-@keyframes blink{
-50%{border-color:transparent}
+@keyframes blink {
+    50% { border-color: transparent; }
 }
 
+/* La ricetta del colore */
+@keyframes respiroColore {
+    0% { color: #ffffff; }
+    100% { 
+        color: #1e90ff; /* Il tuo azzurro */
+        text-shadow: 0 0 15px rgba(30, 144, 255, 0.4); 
+    }
+}
 
 
 
@@ -1812,4 +1861,496 @@ section {
     display: block !important;
     border-radius: 10px !important;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6) !important;
+}
+
+
+
+
+/* --- 1. AVVICINARE IL TITOLO ALLE COMPETENZE (SOLUZIONE PULITA) --- */
+
+/* Riduce lo spazio interno della sezione titolo */
+section#competenze {
+    padding-top: 60px !important;    /* Spazio sopra il titolo */
+    padding-bottom: 0px !important;  /* ELIMINA lo spazio sotto il titolo */
+    min-height: auto !important;
+}
+
+/* Toglie il margine del titolo stesso */
+#competenze .competenze-text h2 {
+    margin-bottom: 10px !important;
+    color: white !important;
+    display: block !important;
+}
+
+/* Toglie lo spazio sopra lo scorrimento delle card */
+.horizontal-wrapper {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+
+/* --- 2. GRADIENTE AI PROGETTI (ADDIO GRIGIO PIATTO) --- */
+
+/* Applica il gradiente alle schede della griglia */
+.project-card {
+    background: linear-gradient(145deg, #0f172a 0%, #1a1a1a 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+/* Applica il gradiente alle schede dello scorrimento orizzontale */
+.scroll-item {
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Effetto luce al passaggio del mouse */
+.project-card:hover, .scroll-item:hover {
+    border-color: #1e90ff !important;
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important;
+}
+
+
+
+
+
+
+
+/* ==================================================
+   AGGIORNAMENTI SEZIONE COMPETENZE (Titolo, Linee, Sfondo)
+   ================================================== */
+
+/* 1. Avvicina il titolo alla sezione e sistema i margini */
+.competenze-text {
+    margin-bottom: -50px !important; /* Tira su la sezione sottostante (modifica il -50px se lo vuoi più o meno vicino) */
+    position: relative;
+    z-index: 10;
+}
+
+.competenze-text h2 {
+    margin-bottom: 0 !important; /* Rimuove lo spazio extra sotto l'H2 */
+}
+
+/* 2. Rimuove la linea bianca e applica il gradiente di sfondo */
+.horizontal-wrapper {
+    border-top: none !important;    /* Rimuove la linea bianca sopra */
+    border-bottom: none !important; /* Rimuove la linea bianca sotto */
+    
+    /* Gradiente elegante: da nero, a blu notte centrale, a nero */
+    background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #000000 100%) !important; 
+}
+
+
+
+
+
+
+
+/* ==================================================
+   1. GRADIENTE SOLO DOVE RICHIESTO (Competenze e Intro Portfolio)
+   ================================================== */
+
+/* Applichiamo il gradiente SOLO alla sezione competenze e alla prima parte del portfolio */
+.horizontal-wrapper, 
+#portfolio-intro {
+    background: linear-gradient(180deg, #000000 0%, #0f172a 50%, #000000 100%) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ==================================================
+   2. RIMOZIONE RIGHE E STACCHI GRIGI (Tutto il resto NERO)
+   ================================================== */
+
+/* Forziamo il nero assoluto su tutte le altre sezioni per eliminare i "blocchi grigi" */
+#categorie, 
+#grafica, 
+#video, 
+#contatti, 
+.personal-hub,
+section {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    border: none !important; /* Elimina le linee di separazione */
+    margin-top: -1px !important; /* Elimina micro-fessure tra i blocchi */
+}
+
+/* Elimina specificamente la linea azzurra/bianca nel portfolio intro */
+.portfolio-line {
+    display: none !important;
+}
+
+/* ==================================================
+   3. AVVICINAMENTO TITOLO COMPETENZE
+   ================================================== */
+.competenze-text {
+    margin-bottom: -60px !important; /* Tira su la sezione del gradiente */
+    position: relative;
+    z-index: 10;
+    background: transparent !important;
+}
+
+
+
+
+
+
+
+/* ==================================================
+   CONTATTI: LAYOUT ORIGINALE + ZOOM SENZA SPOSTAMENTI
+   ================================================== */
+
+/* 1. Il contenitore resta FISSO e INVISIBILE (niente riquadri) */
+.hub-item {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    margin: 0 !important;
+    padding: 20px 0 !important;
+    text-decoration: none !important;
+    /* Non mettiamo transform qui per non spostare il layout */
+}
+
+/* 2. STATO STATICO: Tutto Bianco */
+.hub-icon, 
+.hub-text, 
+.hub-value,
+.hub-item i, 
+.hub-item svg {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    fill: none;
+    display: inline-block; /* Necessario per permettere lo zoom */
+    transition: all 0.3s ease-out !important;
+}
+
+/* 3. HOVER: Ingrandimento degli elementi + Colore Azzurro */
+.hub-item:hover .hub-icon,
+.hub-item:hover .hub-text,
+.hub-item:hover .hub-value {
+    color: #1e90ff !important;  
+    stroke: #1e90ff !important;
+    transform: scale(1.1); /* Ingrandisce solo il contenuto, non la riga */
+}
+
+/* 4. Gradiente sezione (senza linee grigie) */
+#contatti, .personal-hub {
+    border: none !important;
+    background: linear-gradient(180deg, #000000 0%, #0f172a 50%, #000000 100%) !important;
+    margin-top: -1px !important;
+}
+
+/* 5. Rimozione divisori */
+.footer-divider, hr {
+    display: none !important;
+}
+
+.lightbox-overlay {
+    display: none;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+
+
+/* === VIDEO PERFETTI (verticale + orizzontale) === */
+
+.video-wrapper {
+    width: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* VIDEO BASE */
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain; /* 🔥 NON TAGLIA */
+    display: block;
+}
+
+/* 🔥 FULLSCREEN FIX (IMPORTANTISSIMO) */
+video:fullscreen,
+video:-webkit-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: contain !important; /* mantiene proporzioni */
+    background: black;
+}
+
+
+
+
+
+
+
+
+/* VIDEO NORMALE */
+.video-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+
+.custom-video {
+    width: auto;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+/* === FULLSCREEN CUSTOM === */
+.video-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* VIDEO IN FULLSCREEN */
+.video-fullscreen video {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* 🔥 mantiene proporzioni */
+}
+
+
+
+
+
+
+
+/* VIDEO NORMALE */
+.video-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+
+.custom-video {
+    width: auto;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+/* === FULLSCREEN CUSTOM === */
+.video-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* VIDEO IN FULLSCREEN */
+.video-fullscreen video {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* 🔥 mantiene proporzioni */
+}
+
+
+
+/* --- STILE HAMBURGER (Nascosto su PC) --- */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1100;
+}
+
+.hamburger-menu span {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* --- LOGO AC --- */
+.nav-brand {
+    z-index: 1100; /* Lo tiene sopra la tendina */
+}
+
+/* --- REGOLE PER MOBILE (Smartphone) --- */
+@media screen and (max-width: 768px) {
+    #navbar {
+        display: flex !important;
+        justify-content: space-between !important; /* AC a sx, Hamburger a dx */
+        align-items: center !important;
+        padding: 15px 25px !important;
+    }
+
+    .hamburger-menu {
+        display: flex !important; /* Appare solo su telefono */
+    }
+
+    /* La tua lista .nav-links diventa la tendina */
+    .nav-links {
+        position: fixed;
+        top: -100vh; /* Nascosta in alto */
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+        list-style: none;
+    }
+
+    /* Quando il menu è aperto */
+    .nav-links.active {
+        top: 0;
+    }
+
+    /* Animazione Hamburger -> X */
+    .hamburger-menu.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+    .hamburger-menu.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   PULIZIA RIGHE E SOTTOLINEATURE INDESIDERATE
+   ================================================== */
+
+/* 1. SE LA RIGA È SOTTO "AC" O SOTTO I LINK (Sottolineatura) */
+.brand-admin, 
+.nav-links a {
+    text-decoration: none !important; /* Rimuove la linea sotto il testo */
+    outline: none !important; /* Rimuove il riquadro tratteggiato quando clicchi */
+    box-shadow: none !important;
+}
+
+/* 2. SE LA RIGA È SOTTO TUTTA LA BARRA DEL MENU IN ALTO */
+#navbar {
+    border-bottom: none !important; /* Rimuove eventuali bordi netti */
+    box-shadow: none !important; /* Rimuove l'ombra/riga sfumata sotto il menu */
+}
+
+/* 3. SE LA RIGA APPARE INTORNO ALL'HAMBURGER QUANDO LO TOCCHI */
+.hamburger-menu {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important; /* Rimuove il flash blu sui telefoni */
+}
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   OTTIMIZZAZIONE MOBILE: SMARTPHONE E TABLET (MAX 768PX)
+   ================================================== */
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. SPAZIATURE E MARGINI: Riduciamo i buchi enormi */
+    section {
+        padding: 80px 5% !important; /* Riduciamo i 140px che usavi su PC */
+    }
+
+    /* 2. TESTI: Rimpiccioliamo leggermente i titoli per non farli sbordare */
+    h1 { font-size: 32px !important; }
+    h2 { font-size: 28px !important; margin-bottom: 15px !important; }
+    h3 { font-size: 20px !important; }
+    p { font-size: 16px !important; }
+
+    /* 3. NAVBAR E MENU: Evitiamo che i link escano dallo schermo */
+    #navbar {
+        padding: 10px 15px !important;
+    }
+    #navbar ul {
+        gap: 15px !important; /* Stringiamo lo spazio tra i link */
+        flex-wrap: wrap !important; /* Se i link sono troppi, vanno a capo ordinati */
+        justify-content: center !important;
+    }
+    #navbar a {
+        font-size: 14px !important;
+    }
+
+    /* 4. SEZIONE INTRO (Immagine + Testo): Impiliamo in verticale */
+    .intro-container {
+        display: flex !important;
+        flex-direction: column !important; /* Il trucco che mette l'immagine sopra e il testo sotto */
+        text-align: center !important; /* Centriamo il testo su mobile */
+        gap: 30px !important;
+    }
+    .intro-image img {
+        width: 80% !important; /* L'immagine non occupa più mezzo schermo */
+        max-width: 300px !important;
+        margin: 0 auto !important; /* La centra perfettamente */
+    }
+
+    /* 5. BOX VIDEO (Sia il nuovo 'box-video-assoluto' che i vecchi) */
+    .box-video-assoluto,
+    .portfolio-item {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important; /* Su telefono il riquadro nero tocca i bordi destro/sinistro */
+        margin: 20px 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Il video molla l'altezza fissa e si allarga a tutto schermo */
+    .box-video-assoluto video,
+    .portfolio-item video {
+        width: 100% !important;
+        height: auto !important; /* Si adatta proporzionalmente per non schiacciarsi */
+        max-height: 70vh !important; /* Evita che un video verticale occupi letteralmente due schermi */
+    }
+
+    /* 6. COLONNE DELLA GALLERIA: Forziamo la singola colonna */
+    [class*="col-"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
 }
