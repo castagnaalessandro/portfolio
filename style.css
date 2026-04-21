@@ -2828,3 +2828,85 @@ font-size:48px !important;
 }
 
 }
+
+
+
+
+/* =====================================
+   FINAL MOBILE FIX
+===================================== */
+
+@media screen and (max-width:768px){
+
+/* =====================================
+   NOME SU DUE RIGHE
+===================================== */
+
+.intro-text h1{
+font-size:30px !important;
+line-height:1.05 !important;
+white-space:normal !important;
+text-align:center !important;
+display:flex !important;
+flex-direction:column !important;
+align-items:center !important;
+justify-content:center !important;
+gap:2px;
+}
+
+/* se nome e cognome sono span */
+.intro-text h1 span{
+display:block !important;
+width:100%;
+text-align:center;
+}
+
+/* =====================================
+   PROGETTI MOBILE FISSI
+===================================== */
+
+.work-item{
+display:flex !important;
+flex-direction:column !important;
+align-items:center !important;
+justify-content:center !important;
+text-align:center !important;
+padding:28px 0 !important;
+transform:none !important;
+transition:opacity .3s ease !important;
+}
+
+.work-title,
+.work-category{
+width:100% !important;
+text-align:center !important;
+margin:0 !important;
+left:auto !important;
+right:auto !important;
+position:relative !important;
+transform:none !important;
+translate:none !important;
+}
+
+/* niente shift hover */
+.work-item:hover,
+.work-item:active,
+.work-item:focus{
+transform:none !important;
+}
+
+.work-item:hover .work-title,
+.work-item:active .work-title{
+transform:none !important;
+margin:0 !important;
+left:auto !important;
+translate:none !important;
+}
+
+/* solo effetto visivo */
+.work-item:hover .work-title{
+opacity:.9;
+color:#1e90ff !important;
+}
+
+}
