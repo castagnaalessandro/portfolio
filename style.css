@@ -3505,27 +3505,26 @@ font-size:36px;
 
 }
 
-/* DESKTOP PERFETTO + MOBILE MOLTO PIÙ VICINO */
-
 #intro{
     padding-top: 72px !important;
     margin-top: 0 !important;
 }
 
-.intro-container{
-    margin-top: 0 !important;
-}
+@media screen and (max-width:768px){
 
-#navbar{
-    margin-bottom: 0 !important;
-}
+    body{
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
 
-/* MOBILE */
-
-@media screen and (max-width: 768px){
+    #navbar{
+        height: 60px !important;
+        min-height: 60px !important;
+    }
 
     #intro{
-        padding-top: 18px !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
 
     .intro-container{
