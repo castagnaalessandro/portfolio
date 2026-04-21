@@ -2737,51 +2737,58 @@ video:-webkit-full-screen {
 
 
 
-/* Media query per dispositivi mobili */
+/* FORZATURA TOTALE PER MOBILE */
 @media screen and (max-width: 768px) {
     
-    /* 1. Nome: evita che la "O" vada a capo */
-    h1, .hero-title { 
-        font-size: clamp(1.5rem, 8vw, 2.5rem) !important; 
-        white-space: nowrap;
-        text-align: center;
-    }
-
-    /* 2, 4, 5, 6. Centratura generale dei titoli e dei progetti */
-    h2, .section-title, .project-title, .video-title {
+    /* 1. Nome: Mai a capo e centrato */
+    h1, .hero-title, [class*="title-name"] { 
+        font-size: 7.5vw !important; /* Si adatta alla larghezza dello schermo */
+        white-space: nowrap !important;
         text-align: center !important;
-        display: block;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+        display: block !important;
+        width: 100% !important;
     }
 
-    /* 3. Competenze: centra il testo e distanzialo dal numero */
-    .skills-container { /* o la classe che contiene il numero e il testo */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    /* 2, 4, 5, 6. Centratura di TUTTI i titoli delle sezioni e progetti */
+    h2, h3, .section-title, [class*="project-title"], [class*="portfolio"] {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+        width: 100% !important;
     }
 
-    .skills-number { /* Il numero 01, 02, ecc. */
-        position: relative !important; /* Rimuove l'overlap se era absolute */
-        margin-bottom: 10px;
-        display: block;
+    /* 3. Competenze: Centra e stacca il numero dal testo */
+    .skills-header, [class*="skill"] {
+        display: flex !important;
+        flex-direction: column !important; /* Mette il numero sopra e il testo sotto */
+        align-items: center !important;
+        text-align: center !important;
     }
 
-    /* 7. Social e Contatti: allineamento centrale */
-    .contacts-list, .social-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 0;
+    /* Rimuove la sovrapposizione del numero 01 */
+    [class*="number"], .skills-header span {
+        position: relative !important; 
+        top: 0 !important;
+        left: 0 !important;
+        margin-bottom: 10px !important;
     }
 
-    .contact-item {
+    /* 7. Social e Contatti: Allineamento centrale perfetto */
+    .contact-item, .social-links, [class*="contact"], [class*="social"] {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
         justify-content: center !important;
-        width: 100%;
-        margin-bottom: 20px;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    /* Sistema le icone e i link dei social */
+    .contact-item a, .social-links a {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin: 10px 0 !important;
     }
 }
