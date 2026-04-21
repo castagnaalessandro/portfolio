@@ -2834,3 +2834,206 @@ flex-direction:column !important;
 }
 
 }
+
+
+
+/* ===================================
+   GLOBAL DEVICE FIX
+=================================== */
+
+html{
+-webkit-text-size-adjust:100%;
+scroll-behavior:smooth;
+}
+
+html,body{
+margin:0;
+padding:0;
+width:100%;
+max-width:100%;
+overflow-x:hidden;
+}
+
+/* immagini e video fluidi */
+img,
+video,
+iframe{
+max-width:100%;
+height:auto;
+display:block;
+}
+
+/* box model stabile */
+*,
+*::before,
+*::after{
+box-sizing:border-box;
+}
+
+/* ===================================
+   HAMBURGER MENU FIX
+=================================== */
+
+.hamburger-menu{
+display:none;
+width:32px;
+height:24px;
+position:relative;
+cursor:pointer;
+z-index:99999;
+}
+
+.hamburger-menu span{
+position:absolute;
+left:0;
+width:100%;
+height:3px;
+background:#ffffff;
+border-radius:20px;
+transition:0.35s ease;
+}
+
+.hamburger-menu span:nth-child(1){
+top:0;
+}
+
+.hamburger-menu span:nth-child(2){
+top:10px;
+}
+
+.hamburger-menu span:nth-child(3){
+top:20px;
+}
+
+/* X QUANDO ATTIVO */
+.hamburger-menu.active span:nth-child(1){
+transform:rotate(45deg);
+top:10px;
+}
+
+.hamburger-menu.active span:nth-child(2){
+opacity:0;
+}
+
+.hamburger-menu.active span:nth-child(3){
+transform:rotate(-45deg);
+top:10px;
+}
+
+/* ===================================
+   MOBILE / TABLET
+=================================== */
+
+@media screen and (max-width: 992px){
+
+section{
+padding:90px 20px !important;
+}
+
+#navbar{
+padding:18px 20px !important;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.hamburger-menu{
+display:block;
+}
+
+/* MENU MOBILE */
+.nav-links{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+height:100vh;
+background:#000;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:30px;
+transition:0.4s ease;
+z-index:9999;
+padding:0;
+margin:0;
+list-style:none;
+}
+
+.nav-links.active{
+right:0;
+}
+
+.nav-links li a{
+font-size:28px;
+color:#fff;
+text-decoration:none;
+font-weight:600;
+}
+
+/* intro */
+.intro-container,
+.portfolio-container,
+.hub-container{
+flex-direction:column !important;
+display:flex !important;
+text-align:center;
+gap:30px;
+}
+
+/* categorie */
+.category-wrapper{
+width:100% !important;
+}
+
+/* griglie */
+.video-grid,
+.projects-grid{
+grid-template-columns:1fr !important;
+}
+
+/* titoli */
+h1{
+font-size:32px !important;
+line-height:1.1;
+}
+
+h2{
+font-size:30px !important;
+text-align:center !important;
+}
+
+h3{
+font-size:24px !important;
+text-align:center !important;
+}
+
+p{
+font-size:16px !important;
+text-align:center;
+}
+
+/* lavori */
+.work-item{
+flex-direction:column !important;
+align-items:center !important;
+text-align:center !important;
+gap:10px;
+}
+
+.work-title,
+.work-category{
+width:100%;
+text-align:center !important;
+}
+
+/* footer/social */
+.hub-item{
+flex-direction:column !important;
+align-items:center !important;
+text-align:center !important;
+gap:10px;
+}
+
+}
