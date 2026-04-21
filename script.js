@@ -306,3 +306,26 @@ window.addEventListener('load', () => {
 });
 
 });
+
+window.addEventListener("load", function () {
+
+    if (window.innerWidth <= 768) {
+
+        history.scrollRestoration = "manual";
+
+        setTimeout(() => {
+            const home = document.querySelector("#intro");
+
+            if (home) {
+                home.scrollIntoView({
+                    block: "start",
+                    behavior: "instant"
+                });
+            }
+
+            window.scrollTo(0, 0);
+
+        }, 150);
+    }
+
+});
