@@ -3505,7 +3505,7 @@ font-size:36px;
 
 }
 
-/* DESKTOP OK + MOBILE PIÙ COMPATTO */
+/* DESKTOP PERFETTO + MOBILE MOLTO PIÙ VICINO */
 
 #intro{
     padding-top: 72px !important;
@@ -3520,12 +3520,17 @@ font-size:36px;
     margin-bottom: 0 !important;
 }
 
-/* TELEFONO */
+/* MOBILE */
 
 @media screen and (max-width: 768px){
 
     #intro{
-        padding-top: 38px !important;
+        padding-top: 18px !important;
+    }
+
+    .intro-container{
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
 }
