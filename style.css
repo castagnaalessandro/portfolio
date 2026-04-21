@@ -2733,3 +2733,55 @@ video:-webkit-full-screen {
         max-width: 100%;
     }
 }
+
+
+
+
+/* Media query per dispositivi mobili */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Nome: evita che la "O" vada a capo */
+    h1, .hero-title { 
+        font-size: clamp(1.5rem, 8vw, 2.5rem) !important; 
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    /* 2, 4, 5, 6. Centratura generale dei titoli e dei progetti */
+    h2, .section-title, .project-title, .video-title {
+        text-align: center !important;
+        display: block;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 3. Competenze: centra il testo e distanzialo dal numero */
+    .skills-container { /* o la classe che contiene il numero e il testo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .skills-number { /* Il numero 01, 02, ecc. */
+        position: relative !important; /* Rimuove l'overlap se era absolute */
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    /* 7. Social e Contatti: allineamento centrale */
+    .contacts-list, .social-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+    }
+
+    .contact-item {
+        justify-content: center !important;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
