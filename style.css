@@ -2448,89 +2448,7 @@ video:-webkit-full-screen {
 }
 
 
-/* -----------------------------------------------------------
-   MOBILE OPTIMIZATION
-   ----------------------------------------------------------- */
-@media (max-width: 768px) {
-    
-    /* Riduce i padding eccessivi delle sezioni */
-    section {
-        padding: 80px 20px !important;
-        text-align: center; /* Centra tutti i testi della sezione */
-    }
 
-    /* Sistemazione Intro (Foto sopra, Testo sotto) */
-    .intro-container {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 30px !important;
-    }
-
-    .intro-image {
-        width: 100% !important;
-        max-width: 300px; /* Evita che la foto diventi gigante */
-        margin: 0 auto;
-    }
-
-    .intro-image img {
-        height: auto !important; /* Sovrascrive l'altezza fissa del banner */
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        border-radius: 50% !important; /* Effetto cerchio tipico dei portfolio */
-    }
-
-    .intro-text {
-        width: 100% !important;
-        padding: 0 !important;
-    }
-
-    /* Titoli e Testi */
-    h1 {
-        font-size: 2.5rem !important;
-        line-height: 1.1;
-    }
-
-    h2 {
-        font-size: 1.5rem !important;
-        margin-bottom: 15px;
-    }
-
-    p {
-        font-size: 1rem !important;
-        line-height: 1.5;
-    }
-
-    /* Centratura bottoni */
-    .intro-button {
-        display: inline-block;
-        margin-top: 20px;
-    }
-
-    /* Sistemazione Griglia Categorie/Progetti */
-    .categorie-grid, .projects-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-
-    .categoria-item, .project-card {
-        width: 100% !important;
-        margin-bottom: 20px;
-    }
-
-    /* Hub Link (Instagram/LinkedIn) */
-    .hub-item {
-        flex-direction: column !important;
-        padding: 20px !important;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .hub-item-left {
-        justify-content: center !important;
-    }
-}
 
 
 /* ==================================================
@@ -2620,5 +2538,154 @@ video:-webkit-full-screen {
         font-size: 32px !important;
         text-align: left !important;
         margin-bottom: 20px !important;
+    }
+}
+
+
+
+
+
+
+
+/* ==================================================
+   FIX DEFINITIVO MOBILE (SMARTPHONE E TABLET MAX 768PX)
+   Ispirato a lorenzocuscito.it - Incollare in fondo al file
+   ================================================== */
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. RIPRISTINO E CENTRATURA MENU HAMBURGER */
+    #navbar {
+        padding: 15px 20px !important;
+    }
+    
+    .hamburger-menu {
+        display: flex !important;
+        z-index: 10001 !important;
+    }
+
+    .nav-links {
+        position: fixed !important;
+        top: -120vh !important; /* Nascosto in alto di default */
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(10, 10, 10, 0.98) !important;
+        backdrop-filter: blur(15px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        transition: top 0.5s ease-in-out !important;
+        z-index: 10000 !important;
+    }
+
+    /* Apertura Menu */
+    .nav-links.active {
+        top: 0 !important;
+    }
+
+    .nav-links li {
+        margin: 20px 0 !important;
+    }
+
+    .nav-links a {
+        font-size: 32px !important;
+        font-weight: 800 !important;
+        letter-spacing: 3px !important;
+        text-align: center !important;
+    }
+
+    /* 2. CENTRATURA GLOBALE TESTI E CONTENITORI */
+    .intro-container, 
+    .portfolio-container, 
+    .works-header, 
+    .work-item, 
+    .hub-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .intro-text, 
+    .portfolio-text, 
+    .competenze-text, 
+    .works-header-left, 
+    .hub-identity {
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        align-items: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    h1, h2, h3, p, .work-category {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* 3. FIX DIMENSIONI IMMAGINI E PROGETTI (Evita lo schiacciamento) */
+    .intro-image, 
+    .portfolio-image {
+        width: 90% !important;
+        max-width: 320px !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important; /* Mantiene le immagini quadrate/proporzionate */
+        margin: 0 auto 30px auto !important;
+    }
+
+    .intro-image img, 
+    .portfolio-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* 4. FIX SEZIONE CATEGORIE E GRIGLIE */
+    #categorie {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 80px 5% !important;
+    }
+
+    .category-wrapper {
+        width: 100% !important; /* Occupa tutto lo schermo su mobile */
+        max-width: 400px !important;
+    }
+
+    .category-image {
+        height: 300px !important; /* Altezza ottimale per mobile */
+    }
+
+    /* 5. FIX TIPOGRAFIA MOBILE (Evita testi troppo grandi che escono dallo schermo) */
+    .intro-text h1 {
+        font-size: 38px !important;
+    }
+
+    .intro-text h2.typing {
+        font-size: 16px !important;
+        white-space: normal !important; /* Permette al testo di andare a capo se necessario */
+        border-right: none !important;
+        animation: none !important; /* Rimuove animazioni complesse che buggano su iOS/Android */
+    }
+
+    .work-title {
+        font-size: 2.2rem !important;
+    }
+
+    .hub-title {
+        font-size: 2.5rem !important;
+    }
+
+    /* 6. FIX SPAZIATURE SEZIONI */
+    section {
+        padding: 80px 5% !important; /* Riduce l'enorme spazio nero ai lati e sopra/sotto */
+    }
+
+    .marquee-section {
+        padding: 20px 0 !important;
     }
 }
