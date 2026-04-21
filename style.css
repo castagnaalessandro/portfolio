@@ -2954,3 +2954,48 @@ background:#fff !important;
 }
 
 }
+
+
+
+/* =====================================
+   MENU X DEFINITIVA (indipendente dagli span)
+===================================== */
+@media screen and (max-width:768px){
+
+.hamburger-menu{
+position:relative !important;
+width:32px !important;
+height:24px !important;
+z-index:1000001 !important;
+cursor:pointer;
+}
+
+/* nasconde le linee originali quando aperto */
+.hamburger-menu.active span{
+opacity:0 !important;
+}
+
+/* crea X */
+.hamburger-menu.active::before,
+.hamburger-menu.active::after{
+content:"";
+position:absolute;
+left:0;
+top:10px;
+width:32px;
+height:3px;
+background:#ffffff;
+border-radius:30px;
+display:block;
+z-index:1000002;
+}
+
+.hamburger-menu.active::before{
+transform:rotate(45deg);
+}
+
+.hamburger-menu.active::after{
+transform:rotate(-45deg);
+}
+
+}
