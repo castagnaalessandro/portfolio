@@ -3141,12 +3141,26 @@ body {
 }
 
 /* ==================================================
-   SOLO PER TELEFONO (Mobile)
+   SOLO PER TELEFONO (Mobile) - VERSIONE CORAZZATA
    ================================================== */
 @media screen and (max-width: 768px) {
     #navbar {
+        /* FORZIAMO LA VISIBILITÀ */
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        
         height: 60px !important;
         padding: 0 20px !important;
+        
+        /* Se l'effetto vetro fallisce, mettiamo un grigio scuro/nero solido di sicurezza */
+        background-color: rgba(15, 15, 15, 0.95) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        
+        /* Evita che la barra venga "schiacciata" a larghezza zero */
+        width: 100vw !important;
+        max-width: 100% !important;
     }
 
     /* Nascondiamo i link testuali sul telefono */
@@ -3154,7 +3168,7 @@ body {
         display: none !important; 
     }
 
-    /* Mostriamo e disegniamo l'hamburger menu (le 3 lineette bianche) */
+    /* Mostriamo e forziamo le tre lineette dell'hamburger a essere BIANCHE e visibili */
     .hamburger-menu {
         display: flex !important;
         flex-direction: column !important;
@@ -3162,13 +3176,14 @@ body {
         width: 30px !important;
         height: 20px !important;
         cursor: pointer !important;
+        z-index: 999999 !important;
     }
 
     .hamburger-menu span {
         display: block !important;
         width: 100% !important;
         height: 3px !important;
-        background-color: white !important;
+        background-color: #ffffff !important; /* BIANCO PURO FORZATO */
         border-radius: 3px !important;
     }
 }
