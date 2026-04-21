@@ -3504,3 +3504,18 @@ font-size:36px;
 }
 
 }
+
+/* SPAZIO OTTIMIZZATO TRA NAVBAR E HOMEPAGE */
+
+#intro{
+    padding-top: 72px !important;
+    margin-top: 0 !important;
+}
+
+.intro-container{
+    margin-top: 0 !important;
+}
+
+#navbar{
+    margin-bottom: 0 !important;
+}
