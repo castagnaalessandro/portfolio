@@ -146,19 +146,37 @@
         <a href="#" class="brand-admin">AC</a>
     </div>
 
-    <div class="hamburger-menu">
+    <div class="hamburger-menu" onclick="document.getElementById('menu-mobile').classList.toggle('aperto')">
         <span></span>
         <span></span>
         <span></span>
     </div>
 
-    <ul class="nav-links">
-        <li><a href="#intro">Home</a></li>
-        <li><a href="#grafica">Grafica</a></li>
-        <li><a href="#video">Video</a></li>
-        <li><a href="#contatti">Contatti</a></li>
+    <ul id="menu-mobile" class="nav-links">
+        <li><a href="#intro" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Home</a></li>
+        <li><a href="#grafica" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Grafica</a></li>
+        <li><a href="#video" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Video</a></li>
+        <li><a href="#contatti" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Contatti</a></li>
     </ul>
-    </nav>
+</nav>
+
+<style>
+    /* Questa regola vince su tutto e fa apparire il menu */
+    .aperto {
+        display: flex !important;
+        position: absolute !important;
+        top: 60px !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: rgba(15, 15, 15, 0.98) !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 30px 0 !important;
+        gap: 25px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        z-index: 999999 !important;
+    }
+</style>
     
     <section id="categorie">
 
