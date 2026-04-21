@@ -50,33 +50,68 @@ document.addEventListener('DOMContentLoaded', () => {
     /* -----------------------------------------------------------
        3. MENU HAMBURGER (Versione Mobile)
        ----------------------------------------------------------- */
-    const hamburger = document.querySelector('.hamburger-menu');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links li a');
+    /* -----------------------------------------------------------
+   3. MENU HAMBURGER (FIX DEFINITIVO)
+----------------------------------------------------------- */
+const hamburger = document.querySelector('.hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+const links = document.querySelectorAll('.nav-links li a');
 
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
+if (hamburger && navLinks) {
 
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    hamburger.addEventListener('click', () => {
 
-    document.body.style.overflow =
-    navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        const isOpen = navLinks.classList.toggle('active');
 
-    /* forza repaint X */
-    hamburger.offsetHeight;
+        /* forza stato icona */
+        hamburger.classList.toggle('active', isOpen);
+
+        /* blocca scroll */
+        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+
+        /* forza X inline */
+        const spans = hamburger.querySelectorAll('span');
+
+        if (isOpen) {
+            spans[0].style.top = '10px';
+            spans[0].style.transform = 'rotate(45deg)';
+
+            spans[1].style.opacity = '0';
+
+            spans[2].style.top = '10px';
+            spans[2].style.transform = 'rotate(-45deg)';
+        } else {
+            spans[0].style.top = '0';
+            spans[0].style.transform = 'rotate(0deg)';
+
+            spans[1].style.opacity = '1';
+
+            spans[2].style.top = '20px';
+            spans[2].style.transform = 'rotate(0deg)';
+        }
+
     });
 
-        // Chiude il menu quando clicchi su una voce
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-    }
+    links.forEach(link => {
+        link.addEventListener('click', () => {
 
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = 'auto';
+
+            const spans = hamburger.querySelectorAll('span');
+
+            spans[0].style.top = '0';
+            spans[0].style.transform = 'rotate(0deg)';
+
+            spans[1].style.opacity = '1';
+
+            spans[2].style.top = '20px';
+            spans[2].style.transform = 'rotate(0deg)';
+        });
+    });
+
+}
 
     /* -----------------------------------------------------------
        4. IMMAGINE FLUTTUANTE (Hover Reveal sui Progetti)
