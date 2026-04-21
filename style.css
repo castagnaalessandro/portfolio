@@ -2803,3 +2803,46 @@ opacity:.95 !important;
 }
 
 }
+
+
+
+
+/* =====================================
+   MOBILE - TITOLI SEZIONI CENTRATI
+===================================== */
+@media screen and (max-width:768px){
+
+/* tutti i titoli principali */
+.title-reveal,
+#portfolio-intro h2,
+.competenze-text h2,
+#grafica > h2,
+#grafica > h3,
+#video > h2,
+#video > h3,
+.category-wrapper h2{
+display:block !important;
+width:100% !important;
+text-align:center !important;
+margin-left:auto !important;
+margin-right:auto !important;
+left:auto !important;
+right:auto !important;
+position:relative !important;
+transform:none !important;
+translate:none !important;
+}
+
+/* contenitori testo centrati */
+.portfolio-text,
+.competenze-text,
+.category-wrapper{
+text-align:center !important;
+}
+
+/* titoli video card restano centrati */
+.video-info h3{
+text-align:center !important;
+}
+
+}
