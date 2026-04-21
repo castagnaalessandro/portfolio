@@ -3198,39 +3198,61 @@ body {
 
 
 /* =====================================
-   FIX TAP MENU HAMBURGER MOBILE
+   MENU MOBILE FIX DEFINITIVO
 ===================================== */
 
-/* navbar non blocca i click */
-#navbar{
-pointer-events:auto;
-}
-
-/* hamburger sempre cliccabile */
-.hamburger-menu{
-position:relative !important;
-z-index:1000001 !important;
-pointer-events:auto !important;
-cursor:pointer;
--webkit-tap-highlight-color: transparent;
-touch-action:manipulation;
-}
-
-/* linee cliccabili */
-.hamburger-menu span{
-pointer-events:none;
-}
-
-/* menu aperto sopra tutto */
-.nav-links{
-z-index:1000000 !important;
-}
-
-/* mobile */
 @media screen and (max-width:768px){
 
+/* bottone sempre cliccabile */
 .hamburger-menu{
-display:block !important;
+display:flex !important;
+align-items:center;
+justify-content:center;
+position:relative !important;
+z-index:1000002 !important;
+cursor:pointer;
+}
+
+/* pannello menu chiuso */
+.nav-links{
+position:fixed !important;
+top:0;
+left:-100%;
+width:100%;
+height:100vh;
+background:rgba(0,0,0,0.96);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+display:flex !important;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:28px;
+
+transition:left .35s ease !important;
+z-index:1000001 !important;
+
+margin:0;
+padding:0;
+list-style:none;
+}
+
+/* menu aperto */
+.nav-links.active{
+left:0 !important;
+}
+
+/* link */
+.nav-links li a{
+color:#fff !important;
+font-size:28px !important;
+text-decoration:none;
+}
+
+/* navbar sopra tutto */
+#navbar{
+z-index:1000000 !important;
 }
 
 }
