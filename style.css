@@ -2737,58 +2737,259 @@ video:-webkit-full-screen {
 
 
 
-/* FORZATURA TOTALE PER MOBILE */
+/* =========================================
+   MOBILE FULL FIX PORTFOLIO
+========================================= */
 @media screen and (max-width: 768px) {
-    
-    /* 1. Nome: Mai a capo e centrato */
-    h1, .hero-title, [class*="title-name"] { 
-        font-size: 7.5vw !important; /* Si adatta alla larghezza dello schermo */
-        white-space: nowrap !important;
-        text-align: center !important;
-        display: block !important;
-        width: 100% !important;
-    }
 
-    /* 2, 4, 5, 6. Centratura di TUTTI i titoli delle sezioni e progetti */
-    h2, h3, .section-title, [class*="project-title"], [class*="portfolio"] {
-        text-align: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
-        width: 100% !important;
-    }
+html, body{
+overflow-x:hidden !important;
+width:100%;
+}
 
-    /* 3. Competenze: Centra e stacca il numero dal testo */
-    .skills-header, [class*="skill"] {
-        display: flex !important;
-        flex-direction: column !important; /* Mette il numero sopra e il testo sotto */
-        align-items: center !important;
-        text-align: center !important;
-    }
+/* ---------- INTRO ---------- */
 
-    /* Rimuove la sovrapposizione del numero 01 */
-    [class*="number"], .skills-header span {
-        position: relative !important; 
-        top: 0 !important;
-        left: 0 !important;
-        margin-bottom: 10px !important;
-    }
+#intro{
+padding:120px 25px 70px !important;
+text-align:center;
+min-height:auto !important;
+}
 
-    /* 7. Social e Contatti: Allineamento centrale perfetto */
-    .contact-item, .social-links, [class*="contact"], [class*="social"] {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        width: 100% !important;
-    }
+.intro-container{
+flex-direction:column !important;
+gap:30px !important;
+}
 
-    /* Sistema le icone e i link dei social */
-    .contact-item a, .social-links a {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        margin: 10px 0 !important;
-    }
+.intro-text{
+width:100%;
+text-align:center;
+}
+
+.intro-text h1{
+font-size:34px !important;
+line-height:1.1 !important;
+white-space:nowrap !important;   /* BLOCCA LA O */
+letter-spacing:-1px;
+}
+
+.typing{
+font-size:16px !important;
+text-align:center;
+}
+
+/* ---------- PORTFOLIO ---------- */
+
+#portfolio-intro{
+padding:90px 25px !important;
+}
+
+.portfolio-container{
+flex-direction:column !important;
+text-align:center !important;
+gap:35px !important;
+}
+
+.portfolio-text h2{
+text-align:center !important;
+width:100%;
+margin:0 auto 25px auto !important;
+font-size:34px !important;
+}
+
+.portfolio-text p{
+text-align:center !important;
+}
+
+.portfolio-line{
+margin:0 auto 30px auto !important;
+}
+
+/* ---------- COMPETENZE ---------- */
+
+.competenze-text{
+padding:0 20px !important;
+}
+
+.competenze-text h2{
+text-align:center !important;
+font-size:34px !important;
+margin-bottom:45px !important;
+position:relative;
+z-index:5;
+}
+
+.horizontal-wrapper{
+height:auto !important;
+padding:0 20px !important;
+}
+
+.horizontal-container{
+display:flex !important;
+flex-direction:column !important;
+width:100% !important;
+gap:35px !important;
+}
+
+.skill-panel{
+width:100% !important;
+padding:25px 0 !important;
+text-align:center !important;
+}
+
+.skill-number{
+font-size:48px !important;
+margin-bottom:10px !important;
+display:block;
+}
+
+.skill-title{
+font-size:26px !important;
+margin-bottom:10px !important;
+}
+
+.skill-desc{
+max-width:100% !important;
+}
+
+/* ---------- CATEGORIE ---------- */
+
+#categorie{
+padding:80px 20px !important;
+gap:50px !important;
+}
+
+.category-wrapper{
+width:100% !important;
+text-align:center !important;
+}
+
+.category-wrapper h2{
+text-align:center !important;
+font-size:32px !important;
+margin-top:20px !important;
+}
+
+/* ---------- SEZIONE GRAFICA / VIDEO ---------- */
+
+#grafica,
+#video{
+padding:90px 20px !important;
+}
+
+#grafica h2,
+#grafica h3,
+#video h2,
+#video h3{
+text-align:center !important;
+width:100%;
+margin-left:auto !important;
+margin-right:auto !important;
+}
+
+#grafica h2,
+#video h2{
+font-size:34px !important;
+}
+
+#grafica h3,
+#video h3{
+font-size:28px !important;
+margin-bottom:35px !important;
+}
+
+/* ---------- PROGETTI ---------- */
+
+.work-item{
+flex-direction:column !important;
+text-align:center !important;
+gap:12px !important;
+padding:28px 0 !important;
+}
+
+.work-title{
+font-size:28px !important;
+line-height:1.2 !important;
+text-align:center !important;
+width:100%;
+}
+
+.work-category{
+font-size:14px !important;
+text-align:center !important;
+width:100%;
+}
+
+/* ---------- VIDEO ---------- */
+
+.video-grid{
+grid-template-columns:1fr !important;
+gap:35px !important;
+}
+
+.video-card{
+text-align:center !important;
+}
+
+.video-info h3{
+text-align:center !important;
+font-size:24px !important;
+margin-top:18px !important;
+}
+
+.video-info p{
+text-align:center !important;
+}
+
+/* ---------- SOCIAL / CONTATTI ---------- */
+
+.personal-hub{
+padding:80px 25px !important;
+text-align:center !important;
+}
+
+.hub-container{
+grid-template-columns:1fr !important;
+gap:40px !important;
+}
+
+.hub-identity,
+.hub-interactions{
+text-align:center !important;
+}
+
+.hub-title{
+font-size:32px !important;
+}
+
+.hub-subtext{
+margin:auto !important;
+}
+
+.hub-item{
+flex-direction:column !important;
+justify-content:center !important;
+align-items:center !important;
+gap:10px !important;
+text-align:center !important;
+padding:22px 0 !important;
+}
+
+.hub-item-left{
+flex-direction:column !important;
+gap:8px !important;
+}
+
+.hub-value{
+padding:0 !important;
+}
+
+/* ---------- IMMAGINI ---------- */
+
+img{
+max-width:100%;
+height:auto;
+display:block;
+margin:auto;
+}
+
 }
