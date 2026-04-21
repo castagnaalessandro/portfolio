@@ -6,6 +6,7 @@
     <title>Alessandro Castagna Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script src="script.js"></script>
 <body>
 
     <section id="intro">
@@ -146,37 +147,19 @@
         <a href="#" class="brand-admin">AC</a>
     </div>
 
-    <div class="hamburger-menu" onclick="document.getElementById('menu-mobile').classList.toggle('aperto')">
+    <div class="hamburger-menu">
         <span></span>
         <span></span>
         <span></span>
     </div>
 
-    <ul id="menu-mobile" class="nav-links">
-        <li><a href="#intro" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Home</a></li>
-        <li><a href="#grafica" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Grafica</a></li>
-        <li><a href="#video" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Video</a></li>
-        <li><a href="#contatti" onclick="document.getElementById('menu-mobile').classList.remove('aperto')">Contatti</a></li>
+    <ul class="nav-links">
+        <li><a href="#intro">Home</a></li>
+        <li><a href="#grafica">Grafica</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#contatti">Contatti</a></li>
     </ul>
-</nav>
-
-<style>
-    /* Questa regola vince su tutto e fa apparire il menu */
-    .aperto {
-        display: flex !important;
-        position: absolute !important;
-        top: 60px !important;
-        left: 0 !important;
-        width: 100% !important;
-        background-color: rgba(15, 15, 15, 0.98) !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        padding: 30px 0 !important;
-        gap: 25px !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-        z-index: 999999 !important;
-    }
-</style>
+    </nav>
     
     <section id="categorie">
 
@@ -511,6 +494,38 @@
     </div>
 
     <script src="script.js"></script>
+
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const burger = document.querySelector(".hamburger-menu");
+const menu = document.querySelector(".nav-links");
+
+if(!burger || !menu) return;
+
+burger.addEventListener("click", function(e){
+e.preventDefault();
+e.stopPropagation();
+
+burger.classList.toggle("active");
+menu.classList.toggle("active");
+
+document.body.style.overflow =
+menu.classList.contains("active") ? "hidden" : "auto";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+link.addEventListener("click", function(){
+burger.classList.remove("active");
+menu.classList.remove("active");
+document.body.style.overflow = "auto";
+});
+});
+
+});
+</script>
 
 </body>
 </html>
