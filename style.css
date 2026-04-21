@@ -3104,6 +3104,12 @@ transform:rotate(-45deg) !important;
     font-size: 24px !important;
     color: white !important;
     text-decoration: none !important;
+    transition: color 0.3s ease !important; /* Rende il cambio colore fluido */
+}
+
+/* L'effetto Hover: diventa azzurro al passaggio del mouse */
+.brand-admin:hover {
+    color: #66b3ff !important; 
 }
 
 /* 2. Allineamento Link (Per Desktop) */
