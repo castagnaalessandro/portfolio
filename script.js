@@ -268,27 +268,3 @@ if (window.innerWidth > 900 && revealContainer && revealImg && workItems.length 
     });
 
 });
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-
-    // Richiude il menù dopo aver cliccato un link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-});

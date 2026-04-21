@@ -6,7 +6,6 @@
     <title>Alessandro Castagna Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<script src="script.js"></script>
 <body>
 
     <section id="intro">
@@ -494,38 +493,6 @@
     </div>
 
     <script src="script.js"></script>
-
-
-
-    <script>
-document.addEventListener("DOMContentLoaded", function(){
-
-const burger = document.querySelector(".hamburger-menu");
-const menu = document.querySelector(".nav-links");
-
-if(!burger || !menu) return;
-
-burger.addEventListener("click", function(e){
-e.preventDefault();
-e.stopPropagation();
-
-burger.classList.toggle("active");
-menu.classList.toggle("active");
-
-document.body.style.overflow =
-menu.classList.contains("active") ? "hidden" : "auto";
-});
-
-document.querySelectorAll(".nav-links a").forEach(link=>{
-link.addEventListener("click", function(){
-burger.classList.remove("active");
-menu.classList.remove("active");
-document.body.style.overflow = "auto";
-});
-});
-
-});
-</script>
 
 </body>
 </html>
