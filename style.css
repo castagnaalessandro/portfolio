@@ -186,7 +186,7 @@ a:hover {
     .horizontal-wrapper { height: auto; }
     .horizontal-container { flex-direction: column; width: 100%; height: auto; padding: 0 5%;}
     .skill-panel { width: 100%; padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .hover-reveal-container { display: none !important; }
+    /*.hover-reveal-container { display: none !important; }*/
     .intro-container { flex-direction: column; text-align: center; }
     .work-title { font-size: 3.5rem; }
     .works-header { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -2097,7 +2097,7 @@ section {
 
 /* Elimina specificamente la linea azzurra/bianca nel portfolio intro */
 .portfolio-line {
-    display: none !important;
+    /*display: none !important;*/
 }
 
 /* ==================================================
@@ -2163,7 +2163,7 @@ section {
 
 /* 5. Rimozione divisori */
 .footer-divider, hr {
-    display: none !important;
+    /*display: none !important;*/
 }
 
 .lightbox-overlay {
@@ -2420,7 +2420,8 @@ video:-webkit-full-screen {
     50% { border-color: transparent; }
 }
 
-
+/* --- REGOLA PER COMPUTER --- */
+/* --- REGOLA PER COMPUTER --- */
 /* --- REGOLA PER COMPUTER --- */
 .intro-text h2.typing {
     font-size: 22px !important; 
@@ -2546,146 +2547,128 @@ video:-webkit-full-screen {
 
 
 
+/* =========================
+   MOBILE FIX DEFINITIVO
+   ========================= */
 
-/* ==================================================
-   FIX DEFINITIVO MOBILE (SMARTPHONE E TABLET MAX 768PX)
-   Ispirato a lorenzocuscito.it - Incollare in fondo al file
-   ================================================== */
+@media (max-width: 768px) {
 
-@media screen and (max-width: 768px) {
-    
-    /* 1. RIPRISTINO E CENTRATURA MENU HAMBURGER */
-    #navbar {
-        padding: 15px 20px !important;
-    }
-    
-    .hamburger-menu {
-        display: flex !important;
-        z-index: 10001 !important;
+    /* 🔥 RESET GENERALE */
+    body {
+        text-align: center;
     }
 
-    .nav-links {
-        position: fixed !important;
-        top: -120vh !important; /* Nascosto in alto di default */
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background: rgba(10, 10, 10, 0.98) !important;
-        backdrop-filter: blur(15px) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        transition: top 0.5s ease-in-out !important;
-        z-index: 10000 !important;
+    section {
+        padding: 80px 20px !important;
     }
 
-    /* Apertura Menu */
-    .nav-links.active {
-        top: 0 !important;
-    }
-
-    .nav-links li {
-        margin: 20px 0 !important;
-    }
-
-    .nav-links a {
-        font-size: 32px !important;
-        font-weight: 800 !important;
-        letter-spacing: 3px !important;
-        text-align: center !important;
-    }
-
-    /* 2. CENTRATURA GLOBALE TESTI E CONTENITORI */
-    .intro-container, 
-    .portfolio-container, 
-    .works-header, 
-    .work-item, 
-    .hub-container {
+    /* =========================
+       INTRO FIX
+       ========================= */
+    .intro-container {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
         gap: 30px !important;
     }
 
-    .intro-text, 
-    .portfolio-text, 
-    .competenze-text, 
-    .works-header-left, 
-    .hub-identity {
-        text-align: center !important;
-        width: 100% !important;
+    .intro-text {
         max-width: 100% !important;
-        align-items: center !important;
-        display: flex !important;
-        flex-direction: column !important;
+        text-align: center !important;
     }
 
-    h1, h2, h3, p, .work-category {
+    .intro-text h1 {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+    }
+
+    .intro-text h2,
+    .intro-text p {
         text-align: center !important;
+    }
+
+    .intro-image {
+        width: 80% !important;
+        max-width: 260px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+    }
+
+    /* =========================
+       NAVBAR FIX
+       ========================= */
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        background: rgba(0,0,0,0.95);
+
+        transform: translateY(-100%);
+        transition: transform 0.4s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links a {
+        font-size: 28px;
+        color: #fff;
+    }
+
+    /* =========================
+       TITOLI
+       ========================= */
+
+    h2 {
+        font-size: 28px !important;
+        text-align: center !important;
+    }
+
+    h3 {
+        text-align: center !important;
+    }
+
+    p {
+        font-size: 16px !important;
+        text-align: center !important;
+    }
+
+    /* =========================
+       IMMAGINI
+       ========================= */
+
+    img {
         margin-left: auto !important;
         margin-right: auto !important;
+        display: block !important;
     }
 
-    /* 3. FIX DIMENSIONI IMMAGINI E PROGETTI (Evita lo schiacciamento) */
-    .intro-image, 
-    .portfolio-image {
-        width: 90% !important;
-        max-width: 320px !important;
-        height: auto !important;
-        aspect-ratio: 1 / 1 !important; /* Mantiene le immagini quadrate/proporzionate */
-        margin: 0 auto 30px auto !important;
+    /* =========================
+       GRID FIX
+       ========================= */
+
+    .projects-grid,
+    .video-grid {
+        grid-template-columns: 1fr !important;
     }
 
-    .intro-image img, 
-    .portfolio-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-
-    /* 4. FIX SEZIONE CATEGORIE E GRIGLIE */
-    #categorie {
+    .portfolio-container {
         flex-direction: column !important;
-        align-items: center !important;
-        padding: 80px 5% !important;
-    }
-
-    .category-wrapper {
-        width: 100% !important; /* Occupa tutto lo schermo su mobile */
-        max-width: 400px !important;
-    }
-
-    .category-image {
-        height: 300px !important; /* Altezza ottimale per mobile */
-    }
-
-    /* 5. FIX TIPOGRAFIA MOBILE (Evita testi troppo grandi che escono dallo schermo) */
-    .intro-text h1 {
-        font-size: 38px !important;
-    }
-
-    .intro-text h2.typing {
-        font-size: 16px !important;
-        white-space: normal !important; /* Permette al testo di andare a capo se necessario */
-        border-right: none !important;
-        animation: none !important; /* Rimuove animazioni complesse che buggano su iOS/Android */
-    }
-
-    .work-title {
-        font-size: 2.2rem !important;
-    }
-
-    .hub-title {
-        font-size: 2.5rem !important;
-    }
-
-    /* 6. FIX SPAZIATURE SEZIONI */
-    section {
-        padding: 80px 5% !important; /* Riduce l'enorme spazio nero ai lati e sopra/sotto */
-    }
-
-    .marquee-section {
-        padding: 20px 0 !important;
+        text-align: center !important;
     }
 }
