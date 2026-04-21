@@ -307,24 +307,6 @@ if (window.innerWidth > 900 && revealContainer && revealImg && workItems.length 
 
 
 
-// GESTIONE MENU MOBILE
-const hamburger = document.querySelector('.hamburger-menu');
-const navLinks = document.querySelector('.nav-links');
-
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        // Aggiunge o toglie la classe 'active' al menu
-        navLinks.classList.toggle('active');
-    });
-}
-
-// Chiude il menu quando clicchi su un link (così vedi dove vai)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
-});
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
