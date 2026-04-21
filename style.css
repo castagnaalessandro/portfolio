@@ -5,6 +5,52 @@ html, body {
     margin: 0;
     padding: 0;
 }
+/* TEST DI FORZA PER MOBILE */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Nome: forza la riga unica e rimpicciolisce se serve */
+    h1, .hero-title, .title { 
+        white-space: nowrap !important;
+        text-align: center !important;
+        font-size: 7vw !important; /* Si adatta alla larghezza */
+        display: block !important;
+    }
+
+    /* 2, 4, 5, 6. Centratura totale titoli */
+    h2, .section-title, .project-title, h3 {
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        margin: 20px auto !important;
+    }
+
+    /* 3. Competenze: sposta il testo sotto il numero */
+    .skills-header, .skill-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .skills-header span, .number-bg {
+        position: static !important; /* Toglie la sovrapposizione */
+        margin-bottom: 10px !important;
+    }
+
+    /* 7. Social: allineamento verticale e centrale */
+    .contact-item, .social-links {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .contact-item a {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+}
 /* ------------------- RESET BASE / SPAZIATURA ------------------- */
 section {
     background: #000 !important;
