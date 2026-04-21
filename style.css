@@ -3220,3 +3220,9 @@ body {
         margin: 15px 0 !important;
     }
 }
+
+
+/* QUESTA È LA MAGIA CHE LO FA COMPARIRE */
+    #navbar .nav-links.active {
+        display: flex !important; 
+    }
