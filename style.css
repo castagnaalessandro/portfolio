@@ -3282,3 +3282,50 @@ transform:rotate(-45deg);
 
 
 
+/* =====================================
+   TYPING SAFE - NON ROMPE MENU
+===================================== */
+
+.intro-text{
+position:relative;
+z-index:1;
+}
+
+.typing{
+display:inline-block;
+position:relative;
+z-index:1;
+
+white-space:nowrap;
+overflow:hidden;
+
+max-width:100%;
+width:0;
+
+border-right:2px solid #1e90ff;
+
+animation:
+typingSafe 4s steps(34,end) forwards,
+cursorBlink .7s step-end infinite;
+
+pointer-events:none; /* importantissimo */
+}
+
+@keyframes typingSafe{
+from{width:0;}
+to{width:100%;}
+}
+
+@keyframes cursorBlink{
+50%{border-color:transparent;}
+}
+
+/* mobile */
+@media (max-width:768px){
+
+.typing{
+font-size:16px !important;
+max-width:320px;
+}
+
+}
