@@ -3413,83 +3413,94 @@ margin-top:25px;
 
 
 /* =====================================
-   LIGHTBOX FIX SOLO MOBILE
+   LIGHTBOX DEFINITIVO UNIVERSALE
 ===================================== */
 
-@media screen and (max-width:768px){
-
 #project-lightbox{
-position:fixed !important;
-top:0;
-left:0;
-right:0;
-bottom:0;
+position:fixed;
+inset:0;
+z-index:99999;
 
 display:none;
 flex-direction:column;
+
+background:rgba(0,0,0,.96);
 
 overflow-y:auto !important;
 overflow-x:hidden !important;
 
 -webkit-overflow-scrolling:touch;
 
-height:100dvh !important;
-padding:80px 15px 40px !important;
+padding:70px 20px 50px;
 
 justify-content:flex-start !important;
 align-items:center !important;
-
-z-index:99999;
-background:rgba(0,0,0,.97);
 }
 
 #project-lightbox.active{
-display:flex !important;
+display:flex;
+}
+
+/* blocca pagina dietro */
+html,
+body{
+overscroll-behavior:none;
 }
 
 /* navbar sparisce */
-#navbar{
-transition:.3s;
-}
-
 body:has(#project-lightbox.active) #navbar{
 opacity:0 !important;
 pointer-events:none !important;
 transform:translateY(-30px);
+transition:.35s;
 }
 
 /* contenitore */
 .lightbox-content{
 width:100%;
-max-width:100%;
-margin:0 auto;
+max-width:1200px;
 flex-shrink:0;
 }
 
 /* immagine */
 #lb-current-img{
-width:100%;
+max-width:100%;
 height:auto;
-max-height:none !important;
-object-fit:contain;
 display:block;
+margin:auto;
 }
 
-/* descrizione */
+/* info */
 .lightbox-info-box{
 width:100%;
-padding:25px 0 60px;
+max-width:1000px;
+margin-top:30px;
+padding-bottom:80px;
 text-align:center;
 }
 
-/* X */
+/* chiudi */
 .close-lightbox{
 position:fixed;
-top:18px;
-right:18px;
-font-size:38px;
+top:20px;
+right:20px;
 z-index:100000;
+font-size:42px;
 color:#fff;
+cursor:pointer;
+}
+
+/* mobile */
+@media(max-width:768px){
+
+#project-lightbox{
+padding:80px 15px 40px;
+}
+
+.close-lightbox{
+top:16px;
+right:16px;
+font-size:36px;
 }
 
 }

@@ -1,5 +1,5 @@
 // ==========================================================================
-// SCRIPT PRINCIPALE PORTFOLIO - VERSIONE PREMIUM DEFINITIVA
+// SCRIPT PRINCIPALE PORTFOLIO - VERSIONE PREMIUM DEFINITIVA MOBILE FIX
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -137,17 +137,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* -----------------------------------------------------------
-       5. LIGHTBOX PROGETTI PREMIUM
+       5. LIGHTBOX PROGETTI PREMIUM FIX MOBILE
     ----------------------------------------------------------- */
     const lightbox = document.getElementById('project-lightbox');
     const navbar = document.getElementById('navbar');
 
     function hideNavbar() {
-        if (navbar) navbar.classList.add('nav-hidden');
+        if (navbar) navbar.style.display = 'none';
     }
 
     function showNavbar() {
-        if (navbar) navbar.classList.remove('nav-hidden');
+        if (navbar) navbar.style.display = '';
     }
 
     if (lightbox) {
@@ -172,7 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeLightbox() {
             lightbox.style.display = 'none';
             lightbox.classList.remove('active');
+
             document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+
             showNavbar();
         }
 
@@ -203,10 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightbox.style.display = 'flex';
                 lightbox.classList.add('active');
 
-                document.body.style.overflow = 'hidden';
-                lightbox.scrollTop = 0;
-
                 hideNavbar();
+
+                // BLOCCA pagina dietro
+                document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
+
+                // SCROLL interno popup
+                lightbox.style.overflowY = 'auto';
+                lightbox.style.webkitOverflowScrolling = 'touch';
+                lightbox.scrollTop = 0;
             });
 
         });
