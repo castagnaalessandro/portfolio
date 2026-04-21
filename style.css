@@ -3505,7 +3505,7 @@ font-size:36px;
 
 }
 
-/* SPAZIO OTTIMIZZATO TRA NAVBAR E HOMEPAGE */
+/* DESKTOP OK + MOBILE PIÙ COMPATTO */
 
 #intro{
     padding-top: 72px !important;
@@ -3518,4 +3518,14 @@ font-size:36px;
 
 #navbar{
     margin-bottom: 0 !important;
+}
+
+/* TELEFONO */
+
+@media screen and (max-width: 768px){
+
+    #intro{
+        padding-top: 38px !important;
+    }
+
 }
