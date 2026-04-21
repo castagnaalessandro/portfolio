@@ -2737,259 +2737,100 @@ video:-webkit-full-screen {
 
 
 
-/* =========================================
-   MOBILE FULL FIX PORTFOLIO
-========================================= */
-@media screen and (max-width: 768px) {
+/* ===== MOBILE FINAL OVERRIDE ===== */
+@media screen and (max-width:768px){
 
-html, body{
+html,body{
 overflow-x:hidden !important;
-width:100%;
+width:100% !important;
 }
 
-/* ---------- INTRO ---------- */
-
-#intro{
-padding:120px 25px 70px !important;
-text-align:center;
-min-height:auto !important;
-}
-
-.intro-container{
-flex-direction:column !important;
-gap:30px !important;
-}
-
-.intro-text{
-width:100%;
-text-align:center;
-}
-
+/* NOME */
 .intro-text h1{
-font-size:34px !important;
-line-height:1.1 !important;
-white-space:nowrap !important;   /* BLOCCA LA O */
-letter-spacing:-1px;
-}
-
-.typing{
-font-size:16px !important;
-text-align:center;
-}
-
-/* ---------- PORTFOLIO ---------- */
-
-#portfolio-intro{
-padding:90px 25px !important;
-}
-
-.portfolio-container{
-flex-direction:column !important;
+font-size:30px !important;
+white-space:nowrap !important;
 text-align:center !important;
-gap:35px !important;
+width:100% !important;
 }
 
-.portfolio-text h2{
+/* PORTFOLIO */
+.portfolio-text h2,
+#portfolio-intro h2{
 text-align:center !important;
-width:100%;
-margin:0 auto 25px auto !important;
-font-size:34px !important;
+display:block !important;
+width:100% !important;
+margin:auto !important;
 }
 
-.portfolio-text p{
-text-align:center !important;
-}
-
-.portfolio-line{
-margin:0 auto 30px auto !important;
-}
-
-/* ---------- COMPETENZE ---------- */
-
-.competenze-text{
-padding:0 20px !important;
-}
-
+/* COMPETENZE */
 .competenze-text h2{
 text-align:center !important;
-font-size:34px !important;
-margin-bottom:45px !important;
-position:relative;
-z-index:5;
-}
-
-.horizontal-wrapper{
-height:auto !important;
-padding:0 20px !important;
-}
-
-.horizontal-container{
-display:flex !important;
-flex-direction:column !important;
+display:block !important;
 width:100% !important;
-gap:35px !important;
+margin:0 auto 50px auto !important;
+font-size:32px !important;
 }
 
 .skill-panel{
-width:100% !important;
-padding:25px 0 !important;
 text-align:center !important;
 }
 
 .skill-number{
-font-size:48px !important;
+display:block !important;
 margin-bottom:10px !important;
-display:block;
 }
 
 .skill-title{
-font-size:26px !important;
-margin-bottom:10px !important;
-}
-
-.skill-desc{
-max-width:100% !important;
-}
-
-/* ---------- CATEGORIE ---------- */
-
-#categorie{
-padding:80px 20px !important;
-gap:50px !important;
-}
-
-.category-wrapper{
-width:100% !important;
 text-align:center !important;
 }
 
-.category-wrapper h2{
-text-align:center !important;
-font-size:32px !important;
-margin-top:20px !important;
-}
-
-/* ---------- SEZIONE GRAFICA / VIDEO ---------- */
-
-#grafica,
-#video{
-padding:90px 20px !important;
-}
-
+/* GRAFICA / VIDEO */
+.category-wrapper h2,
 #grafica h2,
 #grafica h3,
 #video h2,
 #video h3{
 text-align:center !important;
-width:100%;
+width:100% !important;
 margin-left:auto !important;
 margin-right:auto !important;
 }
 
-#grafica h2,
-#video h2{
-font-size:34px !important;
-}
-
-#grafica h3,
-#video h3{
-font-size:28px !important;
-margin-bottom:35px !important;
-}
-
-/* ---------- PROGETTI ---------- */
-
+/* PROGETTI */
 .work-item{
+display:flex !important;
 flex-direction:column !important;
+align-items:center !important;
 text-align:center !important;
-gap:12px !important;
-padding:28px 0 !important;
 }
 
-.work-title{
-font-size:28px !important;
-line-height:1.2 !important;
-text-align:center !important;
-width:100%;
-}
-
+.work-title,
 .work-category{
-font-size:14px !important;
 text-align:center !important;
-width:100%;
+width:100% !important;
 }
 
-/* ---------- VIDEO ---------- */
-
-.video-grid{
-grid-template-columns:1fr !important;
-gap:35px !important;
-}
-
-.video-card{
-text-align:center !important;
-}
-
-.video-info h3{
-text-align:center !important;
-font-size:24px !important;
-margin-top:18px !important;
-}
-
+/* VIDEO CARD */
+.video-card,
+.video-info,
+.video-info h3,
 .video-info p{
 text-align:center !important;
 }
 
-/* ---------- SOCIAL / CONTATTI ---------- */
-
-.personal-hub{
-padding:80px 25px !important;
-text-align:center !important;
-}
-
-.hub-container{
-grid-template-columns:1fr !important;
-gap:40px !important;
-}
-
+/* SOCIAL */
+.personal-hub,
+.hub-container,
 .hub-identity,
-.hub-interactions{
+.hub-interactions,
+.hub-item{
 text-align:center !important;
-}
-
-.hub-title{
-font-size:32px !important;
-}
-
-.hub-subtext{
-margin:auto !important;
+justify-content:center !important;
+align-items:center !important;
 }
 
 .hub-item{
 flex-direction:column !important;
-justify-content:center !important;
-align-items:center !important;
-gap:10px !important;
-text-align:center !important;
-padding:22px 0 !important;
-}
-
-.hub-item-left{
-flex-direction:column !important;
-gap:8px !important;
-}
-
-.hub-value{
-padding:0 !important;
-}
-
-/* ---------- IMMAGINI ---------- */
-
-img{
-max-width:100%;
-height:auto;
-display:block;
-margin:auto;
 }
 
 }
