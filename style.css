@@ -3068,7 +3068,7 @@ transform:rotate(-45deg) !important;
 
 
 /* ==================================================
-   BANDA NAVBAR TRASPARENTE (GLASSMORPHISM)
+   NAVBAR TRASPARENTE (REGOLE BASE PER TUTTI)
    ================================================== */
 
 #navbar {
@@ -3076,77 +3076,99 @@ transform:rotate(-45deg) !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 70px !important; /* Altezza fissa della barra */
+    height: 70px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     padding: 0 5% !important;
-    z-index: 9999 !important; /* Sempre sopra a tutto */
+    z-index: 99999 !important;
     box-sizing: border-box !important;
 
-    /* EFFETTO TRASPARENTE SFOCATO (Vetro) */
-    background-color: rgba(0, 0, 0, 0.5) !important; /* Nero al 50% di opacità */
-    backdrop-filter: blur(15px) !important; /* Sfoca quello che c'è dietro */
-    -webkit-backdrop-filter: blur(15px) !important; /* Per Safari/iPhone */
-    
-    /* Riga sottile per separare la navbar dal resto */
+    /* EFFETTO VETRO */
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* 1. Allineamento Brand (AC) */
-.nav-brand {
-    display: flex !important;
-    align-items: center !important;
-}
-
-.brand-admin {
-    font-weight: bold !important;
+/* Brand AC con effetto azzurro */
+.nav-brand .brand-admin {
     font-size: 24px !important;
+    font-weight: bold !important;
     color: white !important;
     text-decoration: none !important;
-    transition: color 0.3s ease !important; /* Rende il cambio colore fluido */
+    transition: color 0.3s ease !important;
 }
 
-/* L'effetto Hover: diventa azzurro al passaggio del mouse */
-.brand-admin:hover {
-    color: #66b3ff !important; 
+.nav-brand .brand-admin:hover {
+    color: #66b3ff !important;
 }
 
-/* 2. Allineamento Link (Per Desktop) */
-.nav-links {
-    display: flex !important;
-    list-style: none !important;
-    gap: 30px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.nav-links li a {
-    color: white !important;
-    text-decoration: none !important;
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    transition: 0.3s !important;
-}
-
-.nav-links li a:hover {
-    color: #66b3ff !important; /* Colore azzurro al passaggio del mouse */
-}
-
-/* 3. Gestione Mobile */
-@media screen and (max-width: 768px) {
-    /* Nascondi i link su mobile se usi l'hamburger menu, 
-       o lasciali se vuoi che si vedano (dipende dal tuo JS) */
-    .nav-links {
-        display: none !important; /* Se hai un menu a comparsa, questo lo nasconde di base */
-    }
-    
-    .hamburger-menu {
-        display: block !important;
-    }
-}
-
-/* 🚨 FONDAMENTALE: Spinge giù il sito per non farlo finire SOTTO la navbar */
+/* Evita che il sito finisca sotto la navbar */
 body {
-    padding-top: 70px !important; 
+    padding-top: 70px !important;
+}
+
+/* ==================================================
+   SOLO PER PC (Schermi grandi)
+   ================================================== */
+@media screen and (min-width: 769px) {
+    /* Nascondiamo le tre lineette sul PC */
+    .hamburger-menu {
+        display: none !important; 
+    }
+
+    /* Mostriamo i link testuali (Home, Grafica, ecc.) */
+    .nav-links {
+        display: flex !important;
+        list-style: none !important;
+        gap: 30px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .nav-links li a {
+        color: white !important;
+        text-decoration: none !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        transition: 0.3s !important;
+    }
+
+    .nav-links li a:hover {
+        color: #66b3ff !important;
+    }
+}
+
+/* ==================================================
+   SOLO PER TELEFONO (Mobile)
+   ================================================== */
+@media screen and (max-width: 768px) {
+    #navbar {
+        height: 60px !important;
+        padding: 0 20px !important;
+    }
+
+    /* Nascondiamo i link testuali sul telefono */
+    .nav-links {
+        display: none !important; 
+    }
+
+    /* Mostriamo e disegniamo l'hamburger menu (le 3 lineette bianche) */
+    .hamburger-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 30px !important;
+        height: 20px !important;
+        cursor: pointer !important;
+    }
+
+    .hamburger-menu span {
+        display: block !important;
+        width: 100% !important;
+        height: 3px !important;
+        background-color: white !important;
+        border-radius: 3px !important;
+    }
 }
