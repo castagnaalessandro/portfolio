@@ -1,5 +1,5 @@
 // ==========================================================================
-// SCRIPT PRINCIPALE - LORENZO CUSCITO PORTFOLIO
+// SCRIPT PRINCIPALE
 // Tutte le funzioni si attivano solo quando la pagina è completamente caricata
 // ==========================================================================
 
@@ -56,11 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            // Blocca lo scroll del sito quando il menu è aperto
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-        });
+
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+
+    document.body.style.overflow =
+    navLinks.classList.contains('active') ? 'hidden' : 'auto';
+
+    /* forza repaint X */
+    hamburger.offsetHeight;
+    });
 
         // Chiude il menu quando clicchi su una voce
         links.forEach(link => {
@@ -77,46 +82,43 @@ document.addEventListener('DOMContentLoaded', () => {
        4. IMMAGINE FLUTTUANTE (Hover Reveal sui Progetti)
        ----------------------------------------------------------- */
     const revealContainer = document.querySelector('.hover-reveal-container');
-    const revealImg = document.querySelector('.hover-reveal-img');
-    // Prende sia .work-item che .interactive-project in caso tu abbia usato nomi diversi nell'HTML
-    const workItems = document.querySelectorAll('.work-item, .interactive-project');
+const revealImg = document.querySelector('.hover-reveal-img');
+const workItems = document.querySelectorAll('.work-item, .interactive-project');
 
-    if (revealContainer && revealImg && workItems.length > 0) {
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let revealX = mouseX;
-        let revealY = mouseY;
+if (window.innerWidth > 900 && revealContainer && revealImg && workItems.length > 0) {
 
-        // Traccia la posizione del mouse
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX + 20; 
-            mouseY = e.clientY - (revealContainer.offsetHeight / 2);
-        });
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let revealX = mouseX;
+    let revealY = mouseY;
 
-        // Movimento fluido (Lerp)
-        function renderReveal() {
-            revealX += (mouseX - revealX) * 0.1;
-            revealY += (mouseY - revealY) * 0.1;
-            revealContainer.style.left = `${revealX}px`;
-            revealContainer.style.top = `${revealY}px`;
-            requestAnimationFrame(renderReveal);
-        }
-        renderReveal();
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX + 20;
+        mouseY = e.clientY - (revealContainer.offsetHeight / 2);
+    });
 
-        // Mostra immagine al passaggio del mouse
-        workItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                const imgSrc = item.getAttribute('data-img');
-                if (imgSrc) revealImg.src = imgSrc;
-                revealContainer.classList.add('visible');
-            });
-
-            item.addEventListener('mouseleave', () => {
-                revealContainer.classList.remove('visible');
-            });
-        });
+    function renderReveal() {
+        revealX += (mouseX - revealX) * 0.1;
+        revealY += (mouseY - revealY) * 0.1;
+        revealContainer.style.left = `${revealX}px`;
+        revealContainer.style.top = `${revealY}px`;
+        requestAnimationFrame(renderReveal);
     }
 
+    renderReveal();
+
+    workItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const imgSrc = item.getAttribute('data-img');
+            if (imgSrc) revealImg.src = imgSrc;
+            revealContainer.classList.add('visible');
+        });
+
+        item.addEventListener('mouseleave', () => {
+            revealContainer.classList.remove('visible');
+        });
+    });
+}
 
     /* -----------------------------------------------------------
        5. LIGHTBOX AVANZATO (Galleria Immagini a tutto schermo)
@@ -265,3 +267,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
