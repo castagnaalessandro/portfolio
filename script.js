@@ -296,4 +296,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    /* FIX POSIZIONE HOMEPAGE AL CARICAMENTO MOBILE */
+window.addEventListener('load', () => {
+
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 50);
+
+});
+
 });
