@@ -3279,3 +3279,31 @@ transform:rotate(-45deg);
 }
 
 }
+
+
+
+#project-lightbox{
+overflow-y:auto !important;
+-webkit-overflow-scrolling:touch;
+padding:40px 15px;
+align-items:flex-start !important;
+}
+
+.lightbox-content,
+.lightbox-info-box{
+max-width:100%;
+margin:auto;
+}
+
+
+
+/* Navbar sparisce fullscreen */
+#navbar{
+transition:all .35s ease;
+}
+
+#navbar.nav-hidden{
+opacity:0;
+transform:translateY(-30px);
+pointer-events:none;
+}
