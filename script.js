@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const images = item.querySelectorAll('.project-images img');
 
                 if (title) lbTitle.innerText = title.innerText;
-                if (desc) lbDesc.innerText = desc.innerText;
+                if (desc) lbDesc.innerHTML = desc.innerHTML;
 
                 currentImages = Array.from(images).map(img => img.src);
                 currentIndex = 0;
