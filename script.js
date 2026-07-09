@@ -329,3 +329,56 @@ window.addEventListener("load", function () {
     }
 
 });
+
+
+document.querySelectorAll(".youtube-player").forEach(player => {
+
+    player.addEventListener("click", function () {
+
+        const id = this.dataset.id;
+
+        this.innerHTML = `
+            <iframe
+                src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+                title="YouTube video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        `;
+
+    });
+
+});
+
+
+
+
+
+
+
+
+function caricaIframeUniversita() {
+    const iframe = document.getElementById('iframeUniversita');
+    
+    // Per gli YouTube Shorts usiamo l'ID del video (mW0put-ybkE) convertito in formato embed
+    iframe.src = "https://www.youtube.com/embed/mW0put-ybkE?autoplay=1&modestbranding=1&rel=0";
+    
+    // Scambio visivo istantaneo sulla card dell'università
+    document.querySelector('.video-cover-wrapper-uni').style.display = 'none';
+    document.getElementById('playerUniversitaContainer').style.display = 'block';
+}
+
+
+
+
+
+function caricaIframeNordVpn() {
+    const iframe = document.getElementById('iframeNordVpn');
+    
+    // Per questo Short usiamo l'ID video estratto dal tuo link (oNm353PKQGs) in formato embed
+    iframe.src = "https://www.youtube.com/embed/oNm353PKQGs?autoplay=1&modestbranding=1&rel=0";
+    
+    // Scambio visivo istantaneo sulla card di NordVPN
+    document.querySelector('.video-cover-wrapper-nord').style.display = 'none';
+    document.getElementById('playerNordVpnContainer').style.display = 'block';
+}
