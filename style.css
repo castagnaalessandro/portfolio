@@ -3797,3 +3797,16 @@ font-size:36px;
 
 
 
+html,
+body{
+
+    overscroll-behavior-y:auto;
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.horizontal-wrapper{
+
+    touch-action:pan-y;
+
+}

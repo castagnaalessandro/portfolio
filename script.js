@@ -34,23 +34,68 @@ document.addEventListener('DOMContentLoaded', () => {
             const horizontalScroll = document.getElementById('horizontal-scroll');
 
             if (horizontalScroll) {
-                gsap.to(horizontalScroll, {
-                    x: () => -(horizontalScroll.scrollWidth - window.innerWidth),
-                    ease: "none",
+                // ================================
+    // SCROLL ORIZZONTALE MIGLIORATO
+    // ================================
 
-                    scrollTrigger: {
-                        trigger: ".horizontal-wrapper",
-                        pin: true,
-                        scrub: 1,
-                        start: "top top",
-                        end: () => "+=" + (horizontalScroll.scrollWidth - window.innerWidth),
-                        // FIX: ricalcola sempre la distanza di pin quando cambia il layout
-                        // (immagini/font caricati in ritardo, resize, ecc.). Senza questo,
-                        // la distanza veniva "congelata" al primo calcolo, spesso sbagliato,
-                        // e la sezione restava bloccata: frecce/touchpad sembravano non rispondere.
-                        invalidateOnRefresh: true
-                    }
-                });
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.normalizeScroll({
+        allowNestedScroll: true,
+        lockAxis: false
+    });
+
+    const horizontalWrapper = document.querySelector(".horizontal-wrapper");
+    const horizontalScroll = document.querySelector(".horizontal-container");
+
+    const isTouch =
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0;
+
+    if (
+        horizontalWrapper &&
+        horizontalScroll &&
+        window.innerWidth > 900 &&
+        !isTouch
+    ) {
+
+    gsap.to(horizontalScroll, {
+
+        x: () => -(horizontalScroll.scrollWidth - window.innerWidth),
+
+        ease: "none",
+
+        scrollTrigger: {
+
+            trigger: horizontalWrapper,
+
+            start: "top top",
+
+            end: () =>
+                "+=" + (horizontalScroll.scrollWidth - window.innerWidth),
+
+            pin: true,
+
+            scrub: 0.8,
+
+            anticipatePin: 1,
+
+            invalidateOnRefresh: true,
+
+            fastScrollEnd: true,
+
+            preventOverlaps: true
+        }
+
+    });
+
+}
+
+window.addEventListener("load", () => {
+
+    ScrollTrigger.refresh();
+
+});
 
                 // FIX: al primo calcolo (DOMContentLoaded) immagini e font potrebbero non
                 // essere ancora pronti, quindi scrollWidth è inattendibile. Rifacciamo un
