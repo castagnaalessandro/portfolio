@@ -43,8 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         pin: true,
                         scrub: 1,
                         start: "top top",
-                        end: () => "+=" + (horizontalScroll.scrollWidth - window.innerWidth)
+                        end: () => "+=" + (horizontalScroll.scrollWidth - window.innerWidth),
+                        // FIX: ricalcola sempre la distanza di pin quando cambia il layout
+                        // (immagini/font caricati in ritardo, resize, ecc.). Senza questo,
+                        // la distanza veniva "congelata" al primo calcolo, spesso sbagliato,
+                        // e la sezione restava bloccata: frecce/touchpad sembravano non rispondere.
+                        invalidateOnRefresh: true
                     }
+                });
+
+                // FIX: al primo calcolo (DOMContentLoaded) immagini e font potrebbero non
+                // essere ancora pronti, quindi scrollWidth è inattendibile. Rifacciamo un
+                // refresh di ScrollTrigger quando la pagina è davvero tutta caricata
+                // (window "load") e, per sicurezza, anche un attimo dopo (font-swap/webfont).
+                window.addEventListener('load', () => {
+                    ScrollTrigger.refresh();
+                    setTimeout(() => ScrollTrigger.refresh(), 300);
                 });
             }
         }
@@ -271,6 +285,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     }
+
+
+    /* -----------------------------------------------------------
+       5b. FIX SICUREZZA: evita che il body resti bloccato
+           (position: fixed) se il lightbox non si chiude bene,
+           es. tasto "indietro" del browser (bfcache).
+    ----------------------------------------------------------- */
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+        }
+    });
 
 
     /* -----------------------------------------------------------
